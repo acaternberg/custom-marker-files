@@ -1,5 +1,5 @@
 pipeline {
-	agent { label 'mymaven' }
+	agent { label 'cloudbees-core' }
 
 	options { 
     	buildDiscarder(logRotator(numToKeepStr: '5')) 
@@ -8,7 +8,7 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-			    container('maven-3-3-9') {
+			    container('maven') {
 				sh 'mvn clean package'
 			    }
 			}
