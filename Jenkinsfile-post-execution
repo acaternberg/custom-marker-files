@@ -1,0 +1,20 @@
+pipeline {
+	agent { label 'cloudbees-core' }
+
+	options { 
+    	buildDiscarder(logRotator(numToKeepStr: '5')) 
+  	}
+
+	stages {
+		stage('Injected-pre-stage') {
+			steps {
+			    container('maven') {
+				echo 'Implement your pre-execution steps below......'
+				/*
+				*/
+			    }
+			}
+		}
+
+	}
+}
