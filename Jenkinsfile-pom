@@ -23,13 +23,9 @@ pipeline {
             steps {
                 echo 'Test our code'
                 when { branch "feature-*" }
-                steps {
                     echo 'run this stage - only if the branch name started with feature-*'
-                }
                 when { branch "master" }
-                steps {
                     echo 'run this stage - only if the branch name started with master'
-                }
             }
         }
         stage('Archive') {
