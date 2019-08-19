@@ -9,7 +9,7 @@ pipeline {
 		stage('Injected-pre-stage') {
 			steps {
 			    container('maven') {
-				echo 'Implement your pre-execution steps below......'
+				echo 'Implement your post-execution steps below......'
 				/*
 				*/
 			    }
