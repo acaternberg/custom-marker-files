@@ -20,23 +20,25 @@ pipeline {
             }
         }
         stage('Test') {
+            when { branch "feature-*" }
             steps {
-                echo 'Test our code'
-                when { branch "feature-*" }
-                    echo 'run this stage - only if the branch name started with feature-*'
-                when { branch "master" }
-                    echo 'run this stage - only if the branch name started with master'
+                echo 'run this stage - only if the branch name started with feature-*'
             }
-        }
-        stage('Archive') {
+            when { branch "master" }
             steps {
-                echo 'Archive our artifacts'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploy our application'
+                echo 'run this stage - only if the branch name started with master'
             }
         }
     }
+    stage('Archive') {
+        steps {
+            echo 'Archive our artifacts'
+        }
+    }
+    stage('Deploy') {
+        steps {
+            echo 'Deploy our application'
+        }
+    }
+}
 }
