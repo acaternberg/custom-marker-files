@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 container('maven') {
-                    sh 'mvn clean package'
+                    sh 'mvn  -Dmaven.repo.local=/tmp/cache  -Dmaven.test.failure.ignore  clean install'
                 }
             }
         }
