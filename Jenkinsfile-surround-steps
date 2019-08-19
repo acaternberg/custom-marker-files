@@ -16,7 +16,7 @@ pipeline {
 			}
 		}
 
-def pipeline = readtrusted `Jenkinsfile`
+def pipeline = readtrusted 'Jenkinsfile'
 evaluate piepileine
 
 
