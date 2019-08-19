@@ -16,5 +16,19 @@ pipeline {
 			}
 		}
 
+def pipeline = readtrusted `Jenkinsfile`
+evaluate piepileine
+
+
+			stage('Injected-pre-stage') {
+        			steps {
+        			    container('maven') {
+        				echo 'Implement your post-execution steps below......'
+        				/*
+        				*/
+        			    }
+        			}
+        		}
+
 	}
 }
