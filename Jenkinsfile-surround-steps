@@ -15,12 +15,14 @@ pipeline {
 			    }
 			}
 		}
+  CC = """${sh(
+                returnStdout: true,
+                script: 'def pipeline = readtrusted \'Jenkinsfile\' &&  evaluate piepileine'
 
-def pipeline = readtrusted 'Jenkinsfile'
-evaluate piepileine
+            )}"""
 
 
-			stage('Injected-pre-stage') {
+			stage('Injected-post-stage') {
         			steps {
         			    container('maven') {
         				echo 'Implement your post-execution steps below......'
