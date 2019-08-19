@@ -1,3 +1,9 @@
+/**
+ * Maven Custom Marker Pipeline:
+ * 1.Uses the Maven cache patrh /tmp/cache
+ * 2./tmp/cache  has to be configured as a  PVC mount in the podtemplate
+ * 3. markerfile has to be configired as "cu
+ */
 pipeline {
     agent { label 'cloudbees-core' }
 

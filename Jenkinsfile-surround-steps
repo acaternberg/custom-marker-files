@@ -1,36 +1,28 @@
-pipeline {
-	agent { label 'cloudbees-core' }
+/**
+Example how to surround a pipeline execution with pre asnfd post steps.
 
-	options { 
-    	buildDiscarder(logRotator(numToKeepStr: '5')) 
-  	}
+NOTE: This pipeline MUST be a scripted pipeine because of the
+ evaluate (readTrusted ("Jenkinsfile"))
+ can nort be  executed between stages in declarative pipelines.
 
-	stages {
-		stage('Injected-pre-stage') {
-			steps {
-			    container('maven') {
-				echo 'Implement your pre-execution steps below......'
-				/*
-				*/
-			    }
-			}
-		}
-  CC = """${sh(
-                returnStdout: true,
-                script: 'def pipeline = readtrusted \'Jenkinsfile\' &&  evaluate piepileine'
-
-            )}"""
-
-
-			stage('Injected-post-stage') {
-        			steps {
-        			    container('maven') {
-        				echo 'Implement your post-execution steps below......'
-        				/*
-        				*/
-        			    }
-        			}
-        		}
-
+NOTE: Pipelines that are executed with "evaluate" can be either declarative or scripted.
+*/
+node ('cloudbees-core') {
+	stage('Injected-pre-stage') {
+	    container('maven') {
+			echo 'Implement your pre-execution steps below......'
+		/*
+		Implement your pre-execution steps here......
+		*/
+        }
 	}
+	evaluate (readTrusted ("Jenkinsfile"))
+	stage('Injected-post-stage') {
+        container('maven') {
+        	echo 'Implement your post-execution steps below......'
+    	/*
+    		Implement your post-execution steps here......
+    	*/
+    	}
+    }
 }
