@@ -15,7 +15,7 @@ node ('cloudbees-core') {
             Implement your pre-execution steps here......
             */
             if (env.BRANCH_NAME == 'master') {
-                    echo 'I only execute on the master branch
+                    echo 'I only execute on the master branch'
             } else  if (env.BRANCH_NAME.startWith('feature')) {
                     echo "I execute on $env.BRANCH_NAME branch"
             } else {
