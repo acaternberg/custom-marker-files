@@ -22,13 +22,13 @@ pipeline {
         stage('Test-Master') {
             when { branch "feature-*" }
             steps {
-                echo 'I only execute on the master branch'
+                echo "I only execute on the ${env.BRANCH_NAME} branch"
             }
         }
         stage('Test-Feature') {
             when { branch "master" }
             steps {
-                echo "I execute on $env.BRANCH_NAME branch"
+                echo "I execute on master branch"
             }
         }
         stage('Archive') {
