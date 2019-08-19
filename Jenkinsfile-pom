@@ -19,13 +19,13 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
+        stage('Test-Master') {
             when { branch "feature-*" }
             steps {
                 echo 'I only execute on the master branch'
             }
         }
-        stage('Test') {
+        stage("Test-$env.BRANCH_NAME") {
             when { branch "master" }
             steps {
                 echo "I execute on $env.BRANCH_NAME branch"
