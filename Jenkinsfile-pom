@@ -12,31 +12,31 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Build-CustomMarker') {
             steps {
                 container('maven') {
                     sh 'mvn  -Dmaven.repo.local=/tmp/cache  -Dmaven.test.failure.ignore  clean install'
                 }
             }
         }
-        stage('Test-Master') {
+        stage('Test-Master-CustomMarker') {
             when { branch "feature-*" }
             steps {
                 echo "I only execute on the ${env.BRANCH_NAME} branch"
             }
         }
-        stage('Test-Feature') {
+        stage('Test-Feature-CustomMarker') {
             when { branch "master" }
             steps {
                 echo "I execute on master branch"
             }
         }
-        stage('Archive') {
+        stage('Archive-CustomMarker') {
             steps {
                 echo 'Archive our artifacts'
             }
         }
-        stage('Deploy') {
+        stage('Deploy-CustomMarker') {
             steps {
                 echo 'Deploy our application'
             }
