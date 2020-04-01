@@ -5,7 +5,7 @@
  * 3. markerfile has to be configired as "cu
  */
 pipeline {
-    agent { label 'cloudbees-core' }
+    agent { label 'cb-core-maven' }
 
     options {
         buildDiscarder(logRotator(numToKeepStr: '5'))
