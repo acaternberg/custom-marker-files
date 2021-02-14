@@ -7,7 +7,7 @@ NOTE: This pipeline MUST be a scripted pipeine because of the
 
 NOTE: Pipelines that are executed with "evaluate" can be either declarative or scripted.
 */
-node ('cloudbees-core') {
+node () {
 
 
 	/**
